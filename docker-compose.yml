@@ -1,0 +1,41 @@
+version: '3.4'
+
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  db:
+    image: mysql:5.7
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE_NAME}
+      MYSQL_USER: ${DATABASE_USER}
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+    ports:
+      - "3306:3306"
+    networks:
+      - app-tier
+    volumes:
+      - db_data:/var/lib/mysql
+
+  api:
+    build:
+      context: .
+      target: production
+    env_file:
+      - .env
+    ports:
+      - 8082:8082
+    networks:
+      - app-tier
+    depends_on:
+      - db
+
+
+
+volumes:
+  db_data:

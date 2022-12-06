@@ -89,5 +89,6 @@ typings/
 
 #typescript
 build
-
+*.sqlite
 pnpm-lock.yaml
+/coverage
