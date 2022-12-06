@@ -69,13 +69,7 @@ export const getAll = async (): Promise<CustumerProps[]> => {
         'customers.email',
         'customers.cpf',
 
-        'addresses.zip_code',
-        'addresses.street',
-        'addresses.number',
-        'addresses.complement',
-        'addresses.neighborhood',
         'addresses.city',
-
         'addresses.state',
         'phones.number as phone_number',
       );
@@ -98,13 +92,7 @@ export const getByCPF = async (cpf: string): Promise<CustumerProps> => {
         'customers.email',
         'customers.cpf',
 
-        'addresses.zip_code',
-        'addresses.street',
-        'addresses.number',
-        'addresses.complement',
-        'addresses.neighborhood',
         'addresses.city',
-
         'addresses.state',
         'phones.number as phone_number',
       );
