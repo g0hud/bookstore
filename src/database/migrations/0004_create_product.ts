@@ -12,7 +12,7 @@ export async function up(knex: Knex) {
     table.string('language', 20).notNullable();
     table.string('publisher', 30).notNullable();
     table.integer('pages').notNullable();
-    table.integer('isbn').notNullable();
+    table.string('isbn').notNullable().unique();
     table.integer('stock').notNullable();
 
     table.boolean('available').notNullable().defaultTo(true);
